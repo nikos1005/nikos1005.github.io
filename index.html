@@ -43,21 +43,25 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
         :root {
-            --primary: #1a3a5c;
-            --primary-light: #2a5a8c;
-            --accent: #e8a838;
-            --accent-hover: #d4952e;
+            --primary: #0d0d1a;
+            --primary-light: #1a1a2e;
+            --accent: #c9a959;
+            --accent-hover: #d4b86a;
+            --accent-dim: rgba(201,169,89,0.12);
             --text: #1a1a2e;
-            --text-light: #64748b;
+            --text-light: #6b7280;
             --bg: #ffffff;
-            --bg-alt: #f8fafc;
+            --bg-alt: #f3f4f6;
             --bg-card: #ffffff;
-            --border: #e2e8f0;
-            --shadow: 0 4px 24px rgba(0,0,0,0.08);
-            --radius: 16px;
-            --radius-sm: 10px;
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border: #e5e7eb;
+            --border-light: #f3f4f6;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            --transition: 0.3s ease;
         }
 
         html { scroll-behavior: smooth; }
@@ -127,12 +131,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
+            height: 68px;
         }
         .navbar .logo {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--primary);
+            letter-spacing: 0.3px;
         }
         .navbar .logo span { color: var(--accent); }
         .nav-links {
@@ -213,7 +218,7 @@
             justify-content: center;
             position: relative;
             padding: 80px 20px 40px;
-            background: linear-gradient(135deg, #0f1a2e 0%, #1a3a5c 50%, #0f1a2e 100%);
+            background: #0d0d1a;
             overflow: hidden;
         }
         .hero::before {
@@ -221,20 +226,15 @@
             position: absolute;
             inset: 0;
             background: 
-                radial-gradient(ellipse at 20% 50%, rgba(232,168,56,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(232,168,56,0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 30% 50%, rgba(201,169,89,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.02) 0%, transparent 50%);
         }
-        .hero-pattern {
+        .hero::after {
+            content: '';
             position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image: 
-                linear-gradient(45deg, #fff 25%, transparent 25%),
-                linear-gradient(-45deg, #fff 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #fff 75%),
-                linear-gradient(-45deg, transparent 75%, #fff 75%);
-            background-size: 40px 40px;
-            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,169,89,0.2), transparent);
         }
         .hero-content {
             position: relative;
@@ -244,126 +244,126 @@
         }
         .hero-badge {
             display: inline-block;
-            background: rgba(232,168,56,0.15);
-            border: 1px solid rgba(232,168,56,0.3);
+            background: rgba(201,169,89,0.08);
+            border: 1px solid rgba(201,169,89,0.2);
             color: var(--accent);
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(4px);
+            padding: 8px 24px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
         }
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 600;
             color: #fff;
-            line-height: 1.15;
+            line-height: 1.2;
             margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
         .hero h1 span { color: var(--accent); }
         .hero-sub {
-            font-size: clamp(1.05rem, 2vw, 1.3rem);
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 32px;
-            max-width: 650px;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 40px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         .hero-stats {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 24px;
-            margin-bottom: 36px;
+            gap: 1px;
+            margin-bottom: 40px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
         }
         .hero-stat {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
+            padding: 20px 32px;
             min-width: 140px;
+            flex: 1;
+        }
+        .hero-stat + .hero-stat {
+            border-left: 1px solid rgba(255,255,255,0.06);
         }
         .hero-stat .num {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #fff;
             display: block;
+            font-feature-settings: "tnum";
         }
         .hero-stat .label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 2px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .hero-price {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 28px;
-        }
-        .hero-price small {
-            font-size: 0.5em;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
             font-weight: 400;
-            color: rgba(255,255,255,0.5);
+            color: #fff;
+            margin-bottom: 36px;
+            letter-spacing: 2px;
+            font-feature-settings: "tnum";
+        }
+        .hero-price span { color: var(--accent); font-weight: 600; }
+        .hero-price small {
+            font-size: 0.4em;
+            font-weight: 300;
+            color: rgba(255,255,255,0.35);
+            display: block;
+            margin-top: 6px;
+            letter-spacing: 1px;
         }
         .hero-btns {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 14px 32px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 500;
             border: none;
             cursor: pointer;
             transition: var(--transition);
+            letter-spacing: 0.3px;
         }
         .btn-primary {
             background: var(--accent);
-            color: #fff;
+            color: #0d0d1a;
         }
         .btn-primary:hover {
             background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(232,168,56,0.3);
+            transform: translateY(-1px);
         }
         .btn-outline {
             background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.15);
         }
         .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.4);
+            color: #fff;
         }
         .hero-scroll {
             position: absolute;
-            bottom: 30px;
+            bottom: 28px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.3);
-            font-size: 0.75rem;
-            letter-spacing: 1px;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            animation: bounceDown 2s infinite;
-        }
-        .hero-scroll .arrow { font-size: 1.2rem; }
-        @keyframes bounceDown {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
         }
 
         /* ========== СЕКЦИИ ========== */
@@ -373,27 +373,27 @@
         .section-alt { background: var(--bg-alt); }
         .section-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 56px;
         }
         .section-header h2 {
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
-            font-weight: 800;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 500;
             color: var(--primary);
             margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
         .section-header p {
             color: var(--text-light);
-            font-size: 1.05rem;
-            max-width: 600px;
+            font-size: 0.95rem;
+            max-width: 520px;
             margin: 0 auto;
         }
         .section-header .accent-line {
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 40px;
+            height: 2px;
             background: var(--accent);
-            border-radius: 2px;
-            margin: 16px auto 0;
+            margin: 20px auto 0;
         }
 
         /* ========== КЛЮЧЕВЫЕ ЦИФРЫ ========== */
@@ -404,32 +404,26 @@
         }
         .stat-card {
             background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 32px 24px;
+            padding: 28px 20px;
             text-align: center;
-            box-shadow: var(--shadow);
             border: 1px solid var(--border);
             transition: var(--transition);
         }
         .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.1);
-        }
-        .stat-card .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            border-color: var(--accent);
         }
         .stat-card .num {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 500;
             color: var(--primary);
             display: block;
+            font-feature-settings: "tnum";
         }
         .stat-card .num span { color: var(--accent); }
         .stat-card .label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-light);
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         /* ========== ХАРАКТЕРИСТИКИ ========== */
@@ -444,33 +438,31 @@
             gap: 16px;
             background: var(--bg-card);
             padding: 24px;
-            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             transition: var(--transition);
         }
         .feature-item:hover {
             border-color: var(--accent);
-            box-shadow: 0 4px 16px rgba(232,168,56,0.1);
         }
         .feature-item .icon {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(232,168,56,0.1);
-            border-radius: 10px;
+            background: var(--accent-dim);
         }
         .feature-item .info h4 {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 600;
             margin-bottom: 4px;
         }
         .feature-item .info p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
+            line-height: 1.6;
         }
 
         /* ========== ОПИСАНИЕ ========== */
@@ -481,23 +473,25 @@
             align-items: center;
         }
         .description-text h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 500;
             color: var(--primary);
             margin-bottom: 20px;
         }
         .description-text p {
-            color: var(--text-light);
+            color: #4b5563;
             margin-bottom: 16px;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
         .description-text .highlight {
-            background: rgba(232,168,56,0.1);
-            border-left: 4px solid var(--accent);
+            background: var(--accent-dim);
+            border-left: 2px solid var(--accent);
             padding: 16px 20px;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             margin: 20px 0;
-            font-weight: 500;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #4b5563;
         }
         .description-visual {
             position: relative;
@@ -537,15 +531,12 @@
             text-align: center;
             padding: 28px 16px;
             background: var(--bg-card);
-            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             transition: var(--transition);
             cursor: default;
         }
         .suit-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(232,168,56,0.12);
         }
         .suit-card .icon {
             font-size: 2.4rem;
@@ -624,9 +615,10 @@
             text-align: center;
             padding: 20px;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: var(--bg-alt);
             border-top: 1px solid var(--border);
+            line-height: 1.8;
         }
 
         /* ========== КОНТАКТЫ ========== */
@@ -642,23 +634,24 @@
             margin-bottom: 24px;
         }
         .contact-price-box {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: #0d0d1a;
             color: #fff;
-            padding: 24px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 24px;
+            padding: 28px;
+            margin-bottom: 28px;
         }
         .contact-price-box .price-label {
-            font-size: 0.85rem;
-            opacity: 0.7;
+            font-size: 0.75rem;
+            opacity: 0.4;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .contact-price-box .price-value {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 400;
             color: var(--accent);
-            margin-top: 4px;
+            margin-top: 6px;
+            letter-spacing: 2px;
+            font-feature-settings: "tnum";
         }
         .contact-item {
             display: flex;
@@ -669,14 +662,13 @@
         }
         .contact-item:last-child { border-bottom: none; }
         .contact-item .icon {
-            font-size: 1.3rem;
-            width: 44px;
-            height: 44px;
+            font-size: 1rem;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(232,168,56,0.1);
-            border-radius: 10px;
+            background: var(--accent-dim);
             flex-shrink: 0;
         }
         .contact-item .info .label {
@@ -697,8 +689,6 @@
         .contact-form {
             background: var(--bg-card);
             padding: 32px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
             border: 1px solid var(--border);
         }
         .contact-form h3 {
@@ -758,19 +748,21 @@
 
         /* ========== ПОДВАЛ ========== */
         .footer {
-            background: var(--primary);
-            color: rgba(255,255,255,0.7);
-            padding: 32px 0;
+            background: #0d0d1a;
+            color: rgba(255,255,255,0.4);
+            padding: 40px 0;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
         .footer p { font-size: 0.9rem; }
         .footer a { color: var(--accent); }
         .footer .footer-phone {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 500;
             color: #fff;
             margin-bottom: 8px;
             display: block;
+            letter-spacing: 1px;
         }
 
         /* ========== ПЛАВАЮЩАЯ КНОПКА ЗВОНКА (мобильные) ========== */
@@ -781,18 +773,19 @@
             left: 0;
             right: 0;
             z-index: 999;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: #0d0d1a;
+            border-top: 1px solid rgba(255,255,255,0.06);
             padding: 12px 16px;
             padding-bottom: max(12px, env(safe-area-inset-bottom));
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
             gap: 10px;
             align-items: center;
         }
         .sticky-call .price-tag {
             color: var(--accent);
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1rem;
             flex-shrink: 0;
+            letter-spacing: 1px;
         }
         .sticky-call .call-btn {
             flex: 1;
@@ -801,11 +794,10 @@
             justify-content: center;
             gap: 8px;
             background: var(--accent);
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
+            color: #0d0d1a;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: var(--transition);
         }
         .sticky-call .call-btn:hover {
@@ -813,13 +805,12 @@
             transform: scale(1.02);
         }
         .sticky-call .messenger-btn {
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             transition: var(--transition);
             flex-shrink: 0;
         }
@@ -843,19 +834,18 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 10px 18px;
+            font-weight: 500;
+            font-size: 0.85rem;
             transition: var(--transition);
             color: #fff;
         }
         .messenger-link.wa { background: #25D366; }
-        .messenger-link.wa:hover { background: #1da851; transform: translateY(-2px); }
+        .messenger-link.wa:hover { opacity: 0.85; }
         .messenger-link.tg { background: #0088cc; }
-        .messenger-link.tg:hover { background: #0077b5; transform: translateY(-2px); }
+        .messenger-link.tg:hover { opacity: 0.85; }
         .messenger-link.viber { background: #7360f2; }
-        .messenger-link.viber:hover { background: #5d4ed8; transform: translateY(-2px); }
+        .messenger-link.viber:hover { opacity: 0.85; }
 
         /* ========== КНОПКИ ПОДЕЛИТЬСЯ ========== */
         .share-row {
@@ -904,14 +894,15 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 12px 16px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: #fff;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 400;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
+            letter-spacing: 0.3px;
         }
         .gallery-item-wrapper:hover .gallery-caption {
             opacity: 1;
@@ -950,28 +941,27 @@
             margin: 24px auto 0;
         }
         .floorplan-viz .room {
-            padding: 20px 16px;
-            border-radius: 12px;
+            padding: 24px 16px;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.85rem;
         }
         .floorplan-viz .room.main {
-            background: linear-gradient(135deg, rgba(232,168,56,0.2), rgba(232,168,56,0.05));
-            border: 2px solid var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
             color: var(--primary);
         }
         .floorplan-viz .room.secondary {
-            background: rgba(26,58,92,0.05);
-            border: 2px dashed var(--primary-light);
+            background: rgba(13,13,26,0.03);
+            border: 1px dashed rgba(13,13,26,0.2);
             color: var(--text);
         }
         .floorplan-viz .room .room-size {
             display: block;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: 500;
             color: var(--primary);
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .floorplan-viz .room.main .room-size { color: var(--accent); }
 
@@ -980,16 +970,14 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
-            color: var(--text-light);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
             padding: 6px 14px;
-            border-radius: 50px;
-            background: rgba(232,168,56,0.08);
-            border: 1px solid rgba(232,168,56,0.15);
-            margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-top: 16px;
         }
         .view-counter .count {
-            font-weight: 700;
+            font-weight: 500;
             color: var(--accent);
         }
 
@@ -1014,7 +1002,7 @@
          ============================================================ -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">🏪 <span>Помещение</span></a>
+            <a href="#" class="logo">Коммерческая <span>недвижимость</span></a>
             <div class="nav-links" id="navLinks">
                 <a href="#about" onclick="closeMenu()">О помещении</a>
                 <a href="#features" onclick="closeMenu()">Характеристики</a>
@@ -1037,9 +1025,9 @@
         <div class="parallax-bg" id="parallaxBg"></div>
         <div class="hero-pattern"></div>
         <div class="hero-content">
-            <div class="hero-badge">⚡ ПРЯМАЯ ПРОДАЖА ОТ СОБСТВЕННИКА</div>
-            <h1>Продаётся коммерческое<br>помещение <span>в с. Пионерское</span></h1>
-            <p class="hero-sub">Два отдельных торговых зала · Первая линия трассы Симферополь–Ялта · Вся документация оформлена</p>
+            <div class="hero-badge">Прямая продажа от собственника</div>
+            <h1>Коммерческое помещение<br><span>в с. Пионерское</span></h1>
+            <p class="hero-sub">Два торговых зала · Первая линия трассы Симферополь–Ялта · Документация оформлена</p>
             
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -1061,18 +1049,18 @@
             </div>
 
             <div class="hero-price">
-                13 000 000 ₽ <small>| собственность оформлена</small>
+                <span>13 000 000 ₽</span>
+                <small>Полная стоимость · Собственность · Без посредников</small>
             </div>
 
             <div class="hero-btns">
-                <a href="tel:+79782141658" class="btn btn-primary">📞 Позвонить сейчас</a>
-                <a href="#about" class="btn btn-outline">Подробнее ↓</a>
+                <a href="tel:+79782141658" class="btn btn-primary">Связаться</a>
+                <a href="#about" class="btn btn-outline">Подробнее</a>
             </div>
         </div>
 
         <div class="hero-scroll">
-            <span>Листайте</span>
-            <span class="arrow">↓</span>
+            Листайте
         </div>
     </section>
 
@@ -1082,40 +1070,34 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Помещение в цифрах</h2>
-                <p>Всё, что нужно знать о коммерческом объекте</p>
+                <h2>Характеристики объекта</h2>
+                <p>Ключевые параметры помещения</p>
                 <span class="accent-line"></span>
             </div>
             <div class="stats-grid">
                 <div class="stat-card reveal">
-                    <div class="icon">🏬</div>
                     <span class="num"><span>73</span> м²</span>
                     <span class="label">Первый торговый зал</span>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="icon">🏪</div>
                     <span class="num"><span>37</span> м²</span>
                     <span class="label">Второй торговый зал</span>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="icon">🧮</div>
                     <span class="num"><span>110</span> м²</span>
                     <span class="label">Общая площадь</span>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="icon">🚽</div>
                     <span class="num"><span>2</span></span>
                     <span class="label">Санузла</span>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="icon">🚗</div>
-                    <span class="num"><span>Есть</span></span>
-                    <span class="label">Стоянка</span>
+                    <span class="num">Есть</span>
+                    <span class="label">Парковка</span>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="icon">🚪</div>
                     <span class="num"><span>2</span></span>
-                    <span class="label">Входа (основной + служебный)</span>
+                    <span class="label">Входа</span>
                 </div>
             </div>
         </div>
@@ -1133,76 +1115,67 @@
             </div>
             <div class="features-grid">
                 <div class="feature-item reveal">
-                    <div class="icon">🏬</div>
                     <div class="info">
                         <h4>Два торговых зала</h4>
-                        <p>Просторный зал 73 м² и дополнительный 37 м² — можно использовать как основной зал и подсобное помещение или сдавать часть.</p>
+                        <p>Просторный зал 73 м² и дополнительный 37 м². Возможно использование как основное помещение и подсобное, либо сдача части в аренду.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">🚰</div>
                     <div class="info">
-                        <h4>Вода и свет подключены</h4>
-                        <p>Все коммуникации проведены, счётчики установлены. Ничего дополнительно подключать не нужно.</p>
+                        <h4>Коммуникации подключены</h4>
+                        <p>Водоснабжение и электричество проведены, счётчики установлены. Дополнительных подключений не требуется.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">📄</div>
                     <div class="info">
-                        <h4>Документы в порядке</h4>
-                        <p>Земля и помещение оформлены в собственность. Готовы к сделке. Без посредников — я собственник.</p>
+                        <h4>Правоустанавливающие документы</h4>
+                        <p>Земельный участок и помещение оформлены в собственность. Готовность к сделке. Без посредников.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">🚽</div>
                     <div class="info">
-                        <h4>2 санузла</h4>
-                        <p>Два отдельных санузла для посетителей и персонала.</p>
+                        <h4>Два санузла</h4>
+                        <p>Раздельные санузлы для посетителей и персонала, что соответствует требованиям для объектов торговли.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">🚪</div>
                     <div class="info">
                         <h4>Отдельный служебный вход</h4>
-                        <p>Основной вход с фасада для покупателей, отдельный служебный вход сзади для персонала и поставок.</p>
+                        <p>Основной вход с фасада для посетителей, отдельный служебный — для персонала и поставок товара.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">🅿️</div>
                     <div class="info">
-                        <h4>Парковка и стоянка</h4>
-                        <p>Есть место для парковки — удобно для клиентов, приехавших на машине.</p>
+                        <h4>Парковка</h4>
+                        <p>Обустроенное место для стоянки автомобилей. Удобно для клиентов, прибывающих на личном транспорте.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">📍</div>
                     <div class="info">
                         <h4>Первая линия трассы Симферополь–Ялта</h4>
-                        <p>Помещение находится прямо у дороги. Отличная проходимость и заметность.</p>
+                        <p>Расположение непосредственно у автомобильной дороги. Высокий трафик, хорошая видимость и доступность.</p>
                     </div>
                 </div>
                 <div class="feature-item reveal">
-                    <div class="icon">🚌</div>
                     <div class="info">
                         <h4>50 метров до остановки</h4>
-                        <p>Остановка общественного транспорта в двух шагах — удобная транспортная доступность.</p>
+                        <p>Остановка общественного транспорта в непосредственной близости. Развитая транспортная инфраструктура.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Визуализация плана помещения -->
             <div class="floorplan-viz reveal">
                 <div class="room main">
-                    🏬 Торговый зал №1
+                    Торговый зал №1
                     <span class="room-size">73 м²</span>
                 </div>
                 <div class="room secondary">
-                    🏪 Торговый зал №2
+                    Торговый зал №2
                     <span class="room-size">37 м²</span>
                 </div>
             </div>
             <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--text-light);">
-                + 2 санузла · Подсобные помещения · 2 входа
+                2 санузла · Подсобные помещения · 2 входа
             </p>
         </div>
     </section>
@@ -1228,8 +1201,7 @@
                         документы полностью готовы к сделке. Я собственник — без посредников и комиссий.
                     </p>
                     <div class="highlight">
-                        ⭐ Подходит под: магазин, парикмахерскую, небольшое кафе или донерную, 
-                        детский развивающий центр, офис и любой другой коммерческий бизнес.
+                        Подходит для: магазин, парикмахерская, кафе, столовая, детский развивающий центр, офис, аптека и другие виды коммерческой деятельности.
                     </div>
                     <p>
                         Расположение — <strong>первая линия</strong> прямо возле дороги Симферополь–Ялта, 
@@ -1254,8 +1226,8 @@
     <section class="section section-alt">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Идеально подходит для</h2>
-                <p>Варианты использования помещения</p>
+                <h2>Возможности использования</h2>
+                <p>Варианты коммерческого применения объекта</p>
                 <span class="accent-line"></span>
             </div>
             <div class="suits-grid">
@@ -1293,8 +1265,8 @@
     <section class="section" id="gallery">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Фотографии помещения</h2>
-                <p>Нажмите на фото, чтобы увеличить</p>
+                <h2>Фотографии объекта</h2>
+                <p>Для увеличения нажмите на изображение</p>
                 <span class="accent-line"></span>
             </div>
             <div class="gallery-grid">
@@ -1302,55 +1274,55 @@
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7027.jpg" alt="Торговый зал 73 м²" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🏬 Торговый зал — 73 м²</div>
+                    <div class="gallery-caption">Торговый зал — 73 м²</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7028.jpg" alt="Второй торговый зал 37 м²" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🏪 Второй зал — 37 м²</div>
+                    <div class="gallery-caption">Второй зал — 37 м²</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7029.jpg" alt="Фасад помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🏠 Фасад здания</div>
+                    <div class="gallery-caption">Фасад здания</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7030.jpg" alt="Вход в помещение" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🚪 Входная группа</div>
+                    <div class="gallery-caption">Входная группа</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7031.jpg" alt="Интерьер помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🪟 Внутреннее пространство</div>
+                    <div class="gallery-caption">Внутреннее пространство</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7032.jpg" alt="Подсобное помещение" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">📦 Подсобное помещение</div>
+                    <div class="gallery-caption">Подсобное помещение</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7033.jpg" alt="Санузел" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">🚽 Санузел</div>
+                    <div class="gallery-caption">Санузел</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7034.jpg" alt="Расположение у дороги" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">📍 Вид со стороны трассы</div>
+                    <div class="gallery-caption">Вид со стороны трассы</div>
                 </div>
                 <div class="gallery-item-wrapper">
                     <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
                         <img src="IMG_7035.jpg" alt="Общий вид помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
                     </div>
-                    <div class="gallery-caption">📷 Общий вид</div>
+                    <div class="gallery-caption">Общий вид</div>
                 </div>
             </div>
         </div>
@@ -1376,10 +1348,10 @@
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=34.206328%2C44.878929&z=17&pt=34.206328%2C44.878929%2Cpm2rdl&scroll=true&text=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%9A%D1%80%D1%8B%D0%BC%2C%20%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B5%20%D1%81%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D1%83%D1%88%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%2036%D0%B0" width="100%" height="400" frameborder="0" allowfullscreen="true" loading="lazy" style="display:block;"></iframe>
             </div>
             <div class="map-hint">
-                📍 Республика Крым, Симферопольский р-н, с. Пионерское, ул. Алуштинская, 36а
+                Республика Крым, Симферопольский р-н, с. Пионерское, ул. Алуштинская, 36а
                 · Первая линия трассы Симферополь — Ялта
                 · 50 м от остановки
-                <br><small><a href="https://yandex.ru/maps/?ll=34.206328%2C44.878929&z=17&text=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%9A%D1%80%D1%8B%D0%BC%2C%20%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B5%20%D1%81%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D1%83%D1%88%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%2036%D0%B0" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">🗺️ Открыть на Яндекс.Картах →</a></small>
+                <br><small><a href="https://yandex.ru/maps/?ll=34.206328%2C44.878929&z=17&text=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%9A%D1%80%D1%8B%D0%BC%2C%20%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B5%20%D1%81%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%2C%20%D1%81%D0%B5%D0%BB%D0%BE%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D1%83%D1%88%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%2036%D0%B0" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">Открыть на Яндекс.Картах</a></small>
             </div>
         </div>
     </section>
@@ -1390,14 +1362,14 @@
     <section class="section" id="contacts">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Свяжитесь со мной</h2>
-                <p>Звоните — я всё расскажу и покажу помещение</p>
+                <h2>Контакты</h2>
+                <p>Оперативно отвечу на вопросы и организую показ</p>
                 <span class="accent-line"></span>
             </div>
             <div class="contact-grid">
                 <div class="contact-info reveal-left">
                     <div class="contact-price-box">
-                        <div class="price-label">Стоимость помещения</div>
+                        <div class="price-label">Стоимость объекта</div>
                         <div class="price-value">13 000 000 ₽</div>
                         <div style="margin-top:8px;opacity:0.8;font-size:0.9rem;">
                             Полная стоимость · Собственность · Без посредников
@@ -1415,7 +1387,7 @@
                         <div class="icon">📱</div>
                         <div class="info">
                             <span class="label">Мессенджеры</span>
-                            <span class="value">WhatsApp, Telegram, Viber — тот же номер</span>
+                            <span class="value">WhatsApp, Telegram, Viber</span>
                         </div>
                     </div>
                     <div class="messenger-row">
@@ -1440,13 +1412,13 @@
                         <div class="icon">👤</div>
                         <div class="info">
                             <span class="label">Продавец</span>
-                            <span class="value">Собственник · Без посредников</span>
+                            <span class="value">Собственник</span>
                         </div>
                     </div>
 
                     <!-- Кнопки Поделиться -->
                     <div class="share-row">
-                        <span style="font-size:0.85rem;font-weight:600;color:var(--text-light);width:100%;margin-bottom:-4px;">📢 Поделиться объявлением:</span>
+                        <span style="font-size:0.8rem;font-weight:500;color:var(--text-light);width:100%;margin-bottom:-4px;">Поделиться:</span>
                         <a href="https://wa.me/?text=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D1%91%D1%82%D1%81%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%20%D1%81.%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5!%20110%20%D0%BC%C2%B2%2C%2013%20%D0%BC%D0%BB%D0%BD%20%D0%A0%D0%A3%D0%91.%20https%3A%2F%2Fnikos1005.github.io%2Fpionerskoe-site%2F" target="_blank" rel="noopener" class="share-btn wa-share">💬 WhatsApp</a>
                         <a href="https://t.me/share/url?url=https%3A%2F%2Fnikos1005.github.io%2Fpionerskoe-site%2F&text=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D1%91%D1%82%D1%81%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%20%D1%81.%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%BC!" target="_blank" rel="noopener" class="share-btn tg-share">✈️ Telegram</a>
                         <button class="share-btn copy-share" onclick="copyShareLink()">🔗 Копировать ссылку</button>
@@ -1455,7 +1427,7 @@
 
                 <!-- Форма обратной связи -->
                 <div class="contact-form reveal-right">
-                    <h3>✉️ Отправить сообщение</h3>
+                    <h3>Отправить сообщение</h3>
                     <form id="contactForm" onsubmit="handleForm(event)">
                         <div class="form-group">
                             <label for="name">Ваше имя</label>
@@ -1474,13 +1446,13 @@
                             <textarea id="message" name="message" placeholder="Здравствуйте! Меня интересует это помещение... Можете рассказать подробнее?" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-                            ✉️ Отправить
+                            Отправить
                         </button>
                     </form>
                     <div class="form-success" id="formSuccess">
                         <div class="icon">✅</div>
-                        <p>Спасибо! Ваше сообщение скопировано и готово к отправке.</p>
-                        <p style="font-size:0.85rem;margin-top:8px;">Заявка скопирована в буфер обмена. Отправьте её на почту или просто позвоните по номеру выше.</p>
+                        <p>Спасибо! Ваше сообщение скопировано для отправки.</p>
+                        <p style="font-size:0.85rem;margin-top:8px;">Данные скопированы в буфер обмена. Вы можете отправить их на почту или позвонить по указанному номеру.</p>
                     </div>
                     <p style="text-align:center;margin-top:16px;font-size:0.85rem;color:var(--text-light);">
                         Или просто позвоните: <a href="tel:+79782141658" style="color:var(--accent);font-weight:600;">+7 (978) 214-16-58</a>
@@ -1495,9 +1467,9 @@
          ============================================================ -->
     <div class="sticky-call">
         <span class="price-tag">13 млн ₽</span>
-        <a href="tel:+79782141658" class="call-btn">📞 Позвонить</a>
-        <a href="https://wa.me/79782141658?text=Здравствуйте!%20Меня%20интересует%20помещение%20в%20с.%20Пионерское" target="_blank" rel="noopener" class="messenger-btn wa-btn" title="WhatsApp">💬</a>
-        <a href="https://t.me/+79782141658" target="_blank" rel="noopener" class="messenger-btn tg-btn" title="Telegram">✈️</a>
+        <a href="tel:+79782141658" class="call-btn">Позвонить</a>
+        <a href="https://wa.me/79782141658?text=Здравствуйте!%20Меня%20интересует%20помещение%20в%20с.%20Пионерское" target="_blank" rel="noopener" class="messenger-btn wa-btn" title="WhatsApp">WA</a>
+        <a href="https://t.me/+79782141658" target="_blank" rel="noopener" class="messenger-btn tg-btn" title="Telegram">TG</a>
     </div>
 
     <!-- ============================================================
@@ -1506,12 +1478,13 @@
     <footer class="footer">
         <div class="container">
             <a href="tel:+79782141658" class="footer-phone">+7 (978) 214-16-58</a>
-            <p>Продажа коммерческого помещения · с. Пионерское, ул. Алуштинская, 36а</p>
+            <p>с. Пионерское, ул. Алуштинская, 36а
+            </p>
             <p style="margin-top:8px;font-size:0.8rem;">
-                Собственник · Без посредников · Показ в удобное время
+                Собственник · Показ в удобное время
             </p>
             <div class="view-counter" style="margin:12px auto 0;">
-                👁️ <span class="count" id="viewCount">0</span> просмотров объявления
+                <span class="count" id="viewCount">0</span> просмотров
             </div>
         </div>
     </footer>
@@ -1742,7 +1715,7 @@ ${message}
         // 8. КОПИРОВАНИЕ ССЫЛКИ
         // ═══════════════════════════════════════════
         function copyShareLink() {
-            const url = 'https://nikos1005.github.io/pionerskoe-site/';
+            const url = 'https://nikos1005.github.io/';
             navigator.clipboard.writeText(url).then(() => {
                 const btn = document.querySelector('.copy-share');
                 if (btn) {
